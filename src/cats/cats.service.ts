@@ -4,20 +4,32 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Injectable()
 export class CatsService {
+  private cats:any = [
+    {
+      id: 1,
+      name: 'cat one',
+    },
+    {
+      id: 2,
+      name: 'cat two',
+    },
+  ];
+
   create(createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+    return this.cats.push(createCatDto)
   }
 
   findAll() {
-    return `This action returns all cats`;
+    return this.cats;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} cat`;
+    return this.cats.find(x=>x.id === id)
   }
 
   update(id: number, updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+    const findIndex = this.cats.find
+    return this.cats[findIndex] = {...updateCatDto,id : id}
   }
 
   remove(id: number) {
