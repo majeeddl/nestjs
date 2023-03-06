@@ -2,3 +2,4 @@ basic/yarn.lock
 microservices/serive-consumer/yarn.lock
 .gitignore
 microservices/service-provider/yarn.lock
+microservices/service-consumer/yarn.lock
