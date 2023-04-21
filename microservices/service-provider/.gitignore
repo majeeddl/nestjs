@@ -1,9 +1,3 @@
-basic/yarn.lock
-microservices/serive-consumer/yarn.lock
-microservices/service-provider/yarn.lock
-
-
-
 # compiled output
 /dist
 /node_modules
@@ -40,4 +34,3 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 package-lock.json
-microservices/service-consumer/yarn.lock
