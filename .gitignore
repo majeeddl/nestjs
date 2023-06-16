@@ -42,3 +42,4 @@ lerna-debug.log*
 package-lock.json
 microservices/service-consumer/yarn.lock
 microservices/service-consumer/yarn.lock
+microservices/service-consumer/yarn.lock
