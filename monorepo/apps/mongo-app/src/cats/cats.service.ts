@@ -17,14 +17,16 @@ export class CatsService {
       const createdCat = new this.catModel(createCatDto);
       await createdCat.save({ session });
 
-      //   const createdCatTwo = new this.catModel({
-      //     name: 'Cat Two',
-      //     age: 1,
-      //     breed: 'Breed',
-      //   });
-      //   await createdCatTwo.save({ session });
+      //   throw new Error('Test');
 
-      //   await session.commitTransaction();
+      const createdCatTwo = new this.catModel({
+        name: 'Cat Two',
+        age: 1,
+        breed: 'Breed',
+      });
+      await createdCatTwo.save({ session });
+
+      await session.commitTransaction();
       return createdCat;
     } catch (error) {
       await session.abortTransaction();
@@ -37,6 +39,20 @@ export class CatsService {
   }
 
   async findAll(): Promise<Cat[]> {
-    return this.catModel.find().exec();
+    const session = await this.connection.startSession();
+
+    session.startTransaction();
+
+    try {
+      const findItem = await this.catModel.find().session(session);
+
+      await session.commitTransaction();
+      return findItem;
+    } catch (error) {
+      await session.abortTransaction();
+      throw error;
+    } finally {
+      session.endSession();
+    }
   }
 }
