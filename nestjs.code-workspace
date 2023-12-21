@@ -1,11 +1,16 @@
 {
-	"folders": [
-		{
-			"path": "./basic"
-		},
-		{
-			"path": "./microservices"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "./basic"
+    },
+    {
+      "path": "./microservices"
+    },
+    {
+      "path": "monorepo"
+    }
+  ],
+  "settings": {
+    "jest.disabledWorkspaceFolders": ["monorepo", "microservices", "basic"]
+  }
 }
